@@ -68,7 +68,7 @@
 Name:           mesa
 Summary:        Mesa graphics libraries
 Version:        24.0.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        BSD
 Vendor:         Intel Corporation
 Distribution:   Edge Microvisor Toolkit
@@ -174,6 +174,9 @@ BuildRequires:  glslang
 %if 0%{?with_vulkan_hw}
 BuildRequires:  pkgconfig(vulkan)
 %endif
+
+ExclusiveArch:  x86_64
+Requires:       %{name}-libGL%{?_isa} = %{version}-%{release}
 
 %description
 %{summary}.
@@ -747,6 +750,9 @@ popd
 %endif
 
 %changelog
+* Thu Aug 07 2025 Mun Chun Yep <mun.chun.yep@intel.com> - 24.0.1-5
+- add meta package.
+
 * Fri May 30 2025 Ranjan Dutta <ranjan.dutta@intel.com> - 24.0.1-4
 - merge from Azure Linux 3.0.20250521-3.0
 - Pin rust version
